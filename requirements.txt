@@ -1,0 +1,9 @@
+gunicorn
+Flask
+Flask-Login
+SQLAlchemy
+Jinja2
+requests
+pytz
+tzlocal
+swing

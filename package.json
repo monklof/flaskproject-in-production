@@ -1,0 +1,22 @@
+{
+    "name": "flask-demo",
+    "version": "0.0.1",
+    "description": "a demo with tech stack: flask, npm, webpack, sqlalchemy, request",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack --watch"
+    },
+    "author": "monklof",
+    "license": "MIT",
+    "dependencies": {
+        "jquery": "^2.2.3"
+    },
+    "devDependencies": {
+        "css-loader": "^0.23.1",
+        "style-loader": "^0.13.1"
+    }
+}

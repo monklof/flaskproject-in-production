@@ -1,0 +1,25 @@
+{% extends "layouts/default.html" %}
+
+{% block title %}
+登录
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+    
+<form action='{{request.url}}' method='POST' >
+  <input type='text' name='email' id='email' placeholder='email'></input>
+  <input type='password' name='pwd' id='pwd' placeholder='password'></input>
+  <input type='submit' name='submit'></input>
+</form>
+{% endblock %}
