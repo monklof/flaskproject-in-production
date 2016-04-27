@@ -17,11 +17,7 @@ Flask本身是一个轻量级的Web框架，提供了Web请求处理的基本框
 
 ## 功能特性
 
-目前技术栈大体构成是：
-
-1. [SQLAlchemy][sqla]: 用来作为关系型数据库的ORM。
-2. [npm][npm] + [webpack][webpack]: 用来进行前端依赖管理和前端js资源打包
-3. [gunicorn][gunicorn]: 一个以pre-fork worker模型作为并发策略的WSGI server，用来作为生产服务器。
+目前实现上采用[SQLAlchemy][sqla]，作为关系型数据库的ORM，[gunicorn][gunicorn]用来作为生产服务器。
 
 ### 用户认证
 
@@ -106,10 +102,10 @@ $ sudo pip install -r requirements.txt
 
 ### manage.py
 
-`manage.py`是程序的命令行接口，提供了控制程序运行方式的功能。有两个子命令，
+`manage.py`是FIP的管理命令，它有两个子命令:
 
-* `debug_server`: 启动一个Flask内置的调试服务器。
-* `gunicorn_server`: 启动gunicorn_server
+* `debug_server`: 启动Flask内置的调试服务器运行应用。
+* `gunicorn_server`: 使用Gunicorn来启动服务器运行应用。
 
 ```bash
 $ ./bin/manage.py debug_server
@@ -133,16 +129,16 @@ $ ./bin/manage.py gunicorn_server accesslog=/path/to/accesslog/access.log errorl
 
     * --config=${CONFIG}: 使用程序的哪个配置, 默认是dev
     * --host=${HOST}: server绑定在哪个IP上，默认是0.0.0.0
-    * --port=${PORT}: server端口
+    * --port=${PORT}: server端口，默认是5000
 
 * `manage.py gunicorn_server`
 
     * --config=${CONFIG}: 使用程序的哪个配置, 默认是prod
     * --host=${HOST}: server绑定在哪个IP上，默认是0.0.0.0
-    * --port=${PORT}: server端口
+    * --port=${PORT}: server端口，默认是5000
     * --workers=${WORKERS}: 启动worker进程数，默认是2*N+1，N为CPU核心数。
-    * --accesslog=${ACCESSLOG}: Web访问日志文件。
-    * --errorlog=${ERRORLOG}: 出错日志
+    * --accesslog=${ACCESSLOG}: Web访问日志文件
+    * --errorlog=${ERRORLOG}: 出错日志文件
 
 ## 内部实现
 

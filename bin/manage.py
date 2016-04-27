@@ -75,11 +75,13 @@ def gunicorn_server(
     @=accesslog
     @=errorlog
     """
-    #删除命令行参数, 防止gunicorn Application重复解析命令行
+    # 删除命令行参数, 防止gunicorn Application重复解析命令行
     del sys.argv[1:] #TODO: Do this in docopt as an option
 
     port = int(port)
-
+    print "listening at http://%s:%s" % (host, port)
+    print "request access logging file: %s" % accesslog
+    print "request error logging file: %s" % errorlog
     from gunicorn.app.base import Application
     class FlaskApplication(Application):
         def init(self, parser, opts, args):
